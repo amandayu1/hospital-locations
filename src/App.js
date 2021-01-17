@@ -2,6 +2,31 @@ import './App.css';
 
 import React, { useState, useEffect } from 'react';
 
+const List = () => {
+  return(
+      <ol>
+          <li>
+            <lead>North York General Hospital</lead>
+            <p>4001 Leslie St, North York</p>
+          </li>
+          <li>
+            <lead>Markham Stouffville Hospital</lead>
+            <p>381 Church St, Markham</p>
+          </li>
+          <li>
+            <lead>Sunnybrook Hospital</lead>
+            <p>2075 Bayview Ave, Toronto</p>
+          </li>
+          <li>
+            <lead>Scarborough General Hospital</lead>
+            <p>3050 Lawrence Ave E, Scarborough</p>
+          </li>
+        </ol>
+  )
+
+}
+
+
   const App = () => {
   const [userAddress, setUserAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ latitude: "43.793607699999995", longitude: "-79.3284823" });
@@ -132,15 +157,17 @@ import React, { useState, useEffect } from 'react';
       <p>Latitude: {coordinates.latitude}</p>
       <p>Longitude: {coordinates.longitude}</p>
       <p>Address: {isAddressVisible ? userAddress : ""}</p>
+
+      <List />
+
       <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
-      &markers=size:small%7Ccolor:blue%7C${coordinates.latitude-0.01},${coordinates.longitude-0.02}
-      &markers=color:0xE26F6F%7Clabel:1%7C${loc1.latitude-0.02},${loc1.longitude-0.05}
-      &markers=color:0xE26F6F%7Clabel:2%7C${loc2.latitude},${loc2.longitude-0.1}
-      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${loc3.latitude},${loc3.longitude-0.09}
+      &markers=size:small%7Ccolor:blue%7C${coordinates.latitude},${coordinates.longitude}
+      &markers=color:0xE26F6F%7Clabel:1%7C${loc1.latitude},${loc1.longitude}
+      &markers=color:0xE26F6F%7Clabel:2%7C${loc2.latitude},${loc2.longitude}
+      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${loc3.latitude},${loc3.longitude}
       &markers=color:0xFFB0B1%7Clabel:4%7C${loc4.latitude},${loc4.longitude}
       &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
         alt="Your Location on Google Maps" />
-
     </div>
   );
 }
