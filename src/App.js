@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 const List = () => {
   return(
       <ol>
+          <h3>Recommended Locations</h3>
           <li>
             <lead>North York General Hospital</lead>
             <p>4001 Leslie St, North York</p>
@@ -153,21 +154,28 @@ const List = () => {
       </h2>
 
       <button className="button" onClick={() => getLocation()}>Locate Me</button>
-      <h4>Coordinates</h4>
-      <p>Latitude: {coordinates.latitude}</p>
-      <p>Longitude: {coordinates.longitude}</p>
+      <h4>Your Coordinates</h4>
+      
+      <p>Latitude: {isAddressVisible ? coordinates.latitude: null}</p>
+      <p>Longitude: {isAddressVisible ? coordinates.longitude: null}</p>
       <p>Address: {isAddressVisible ? userAddress  : ""}</p>
       
       {isAddressVisible ? <List />  : null}
-
+    
+      {isAddressVisible ?
       <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
       &markers=size:small%7Ccolor:blue%7C${coordinates.latitude-0.01},${coordinates.longitude-0.02}
-      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${coordinates.latitude-0.06},${coordinates.longitude-0.1}
       &markers=color:0xE26F6F%7Clabel:1%7C${coordinates.latitude-0.01},${coordinates.longitude-0.05}
+      &markers=color:0xe87d7d%7Clabel:2%7C${coordinates.latitude},${coordinates.longitude-0.1}
+      &markers=color:0xffa1a2%7Clabel:3%7C${coordinates.latitude-0.06},${coordinates.longitude-0.1}
       &markers=color:0xFFB0B1%7Clabel:4%7C${coordinates.latitude-0.1},${coordinates.longitude}
-      &markers=color:0xE26F6F%7Clabel:2%7C${coordinates.latitude},${coordinates.longitude-0.1}
+      &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`} alt="Your Location on Google Maps" />
+      :
+      <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
+      &markers=size:small%7Ccolor:blue%7C${coordinates.latitude-0.01},${coordinates.longitude-0.02}
       &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
-        alt="Your Location on Google Maps" />
+      alt="Your Location on Google Maps" />
+      }
     </div>
   );
 }

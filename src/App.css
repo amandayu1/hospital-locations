@@ -1,4 +1,17 @@
+ol{
+  text-align: left;
+  padding: 3% 0 2% 27%
+}
 
+li{
+  text-align: left;
+  padding: 10px;
+
+}
+
+img{
+  margin-bottom: 3%;
+}
 
 .button {
     margin-top: 15px;
