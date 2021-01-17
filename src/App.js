@@ -1,8 +1,8 @@
-import '../App.css';
+import './App.css';
 
 import React, { useState, useEffect } from 'react';
 
-export const App = () => {
+  const App = () => {
   const [userAddress, setUserAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ latitude: "43.793607699999995", longitude: "-79.3284823" });
   const [isAddressVisible, setAddressVisiblitly] = useState(false);
@@ -97,7 +97,7 @@ export const App = () => {
         Geolocation Test
       </h2>
 
-      <button onClick={() => getLocation()}>Get coordinates</button>
+      <button className="button" onClick={() => getLocation()}>Get coordinates</button>
       <h4>Coordinates</h4>
       <p>Latitude: {coordinates.latitude}</p>
       <p>Longitude: {coordinates.longitude}</p>
@@ -114,3 +114,4 @@ export const App = () => {
     </div>
   );
 }
+export default App;
