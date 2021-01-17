@@ -105,40 +105,39 @@ import React, { useState, useEffect } from 'react';
   }
 
   const [loc1, setLoc1] = useState({
-    latitude: `${coordinates.latitude + 400}`,
-    longitude: `${coordinates.latitude + 400}`
+    latitude: `${coordinates.latitude-0.02}`,
+    longitude: `${coordinates.latitude -0.05}`
   });
   const [loc2, setLoc2] = useState({
-    latitude: `${coordinates.latitude + 200}`,
-    longitude: `${coordinates.latitude + 200}`
+    latitude: `${coordinates.latitude }`,
+    longitude: `${coordinates.latitude -0.1}`
   });
   const [loc3, setLoc3] = useState({
-    latitude: `${coordinates.latitude - 400}`,
-    longitude: `${coordinates.latitude - 400}`
+    latitude: `${coordinates.latitude -0.06}`,
+    longitude: `${coordinates.latitude -0.09}`
   });
   const [loc4, setLoc4] = useState({
-    latitude: `${coordinates.latitude - 200}`,
-    longitude: `${coordinates.latitude + 200}`
+    latitude: `${coordinates.latitude - 0.1}`,
+    longitude: `${coordinates.latitude}`
   });
 
   return (
     <div className="Map">
       <h2>
-        Geolocation Test
+        Find the Nearest Hospital
       </h2>
 
-      <button className="button" onClick={() => getLocation()}>Get coordinates</button>
+      <button className="button" onClick={() => getLocation()}>Locate Me</button>
       <h4>Coordinates</h4>
       <p>Latitude: {coordinates.latitude}</p>
       <p>Longitude: {coordinates.longitude}</p>
-      <h4>Google Maps Geocoding</h4>
       <p>Address: {isAddressVisible ? userAddress : ""}</p>
       <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
       &markers=size:small%7Ccolor:blue%7C${coordinates.latitude-0.01},${coordinates.longitude-0.02}
-      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${coordinates.latitude-0.06},${coordinates.longitude-0.1}
-      &markers=color:0xE26F6F%7Clabel:1%7C${coordinates.latitude-0.01},${coordinates.longitude-0.05}
-      &markers=color:0xFFB0B1%7Clabel:4%7C${coordinates.latitude-0.1},${coordinates.longitude}
-      &markers=color:0xE26F6F%7Clabel:2%7C${coordinates.latitude},${coordinates.longitude-0.1}
+      &markers=color:0xE26F6F%7Clabel:1%7C${loc1.latitude-0.02},${loc1.longitude-0.05}
+      &markers=color:0xE26F6F%7Clabel:2%7C${loc2.latitude},${loc2.longitude-0.1}
+      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${loc3.latitude},${loc3.longitude-0.09}
+      &markers=color:0xFFB0B1%7Clabel:4%7C${loc4.latitude},${loc4.longitude}
       &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
         alt="Your Location on Google Maps" />
 
