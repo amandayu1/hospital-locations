@@ -156,16 +156,16 @@ const List = () => {
       <h4>Coordinates</h4>
       <p>Latitude: {coordinates.latitude}</p>
       <p>Longitude: {coordinates.longitude}</p>
-      <p>Address: {isAddressVisible ? userAddress : ""}</p>
-
-      <List />
+      <p>Address: {isAddressVisible ? userAddress  : ""}</p>
+      
+      {isAddressVisible ? <List />  : null}
 
       <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
-      &markers=size:small%7Ccolor:blue%7C${coordinates.latitude},${coordinates.longitude}
-      &markers=color:0xE26F6F%7Clabel:1%7C${loc1.latitude},${loc1.longitude}
-      &markers=color:0xE26F6F%7Clabel:2%7C${loc2.latitude},${loc2.longitude}
-      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${loc3.latitude},${loc3.longitude}
-      &markers=color:0xFFB0B1%7Clabel:4%7C${loc4.latitude},${loc4.longitude}
+      &markers=size:small%7Ccolor:blue%7C${coordinates.latitude-0.01},${coordinates.longitude-0.02}
+      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${coordinates.latitude-0.06},${coordinates.longitude-0.1}
+      &markers=color:0xE26F6F%7Clabel:1%7C${coordinates.latitude-0.01},${coordinates.longitude-0.05}
+      &markers=color:0xFFB0B1%7Clabel:4%7C${coordinates.latitude-0.1},${coordinates.longitude}
+      &markers=color:0xE26F6F%7Clabel:2%7C${coordinates.latitude},${coordinates.longitude-0.1}
       &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
         alt="Your Location on Google Maps" />
     </div>
