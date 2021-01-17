@@ -14,8 +14,7 @@ import React, { useState, useEffect } from 'react';
   }, [coordinates])
 
   const getLocation = async () => {
-  
-    
+
     if (navigator.geolocation) {
       // navigator.geolocation.getCurrentPosition(getCoordinates, handelLocationError);
 
