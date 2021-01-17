@@ -36,7 +36,60 @@ export const App = () => {
     setUserAddress(data.results[0].formatted_address);
   }
 
+  const getHospitalInfo = async () => {
+    // https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.793607699999995,-79.3284823&radius=10000&type=hospital&keyword=hospital&name=hospital&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8
+    var myHeaders = new Headers();
+    myHeaders.append("Access-Control-Allow-Origin", "*");
+    myHeaders.append("Access-Control-Allow-Credentials", "true");
+    myHeaders.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
 
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.793607699999995,-79.3284823&radius=10000&type=hospital&keyword=hospital&name=hospital&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8")
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+  }
+
+  const handelLocationError = (error) => {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        alert("User denied the request for Geolocation.")
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.")
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.")
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.")
+        break;
+      default:
+        alert("An unknown error occured.")
+    }
+  }
+
+  const [loc1, setLoc1] = useState({
+    latitude: `${coordinates.latitude + 400}`,
+    longitude: `${coordinates.latitude + 400}`
+  });
+  const [loc2, setLoc2] = useState({
+    latitude: `${coordinates.latitude + 200}`,
+    longitude: `${coordinates.latitude + 200}`
+  });
+  const [loc3, setLoc3] = useState({
+    latitude: `${coordinates.latitude - 400}`,
+    longitude: `${coordinates.latitude - 400}`
+  });
+  const [loc4, setLoc4] = useState({
+    latitude: `${coordinates.latitude - 200}`,
+    longitude: `${coordinates.latitude + 200}`
+  });
 
   return (
     <div className="Map">
