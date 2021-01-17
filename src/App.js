@@ -103,7 +103,7 @@ import React, { useState, useEffect } from 'react';
       <p>Longitude: {coordinates.longitude}</p>
       <h4>Google Maps Geocoding</h4>
       <p>Address: {isAddressVisible ? userAddress : ""}</p>
-      <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
+      <img class="location" src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
       &markers=size:small%7Ccolor:blue%7C${coordinates.latitude},${coordinates.longitude}
       &markers=%7Ccolor:0xFFB0B1%7Clabel:1%7C${coordinates.latitude-0.05},${coordinates.longitude-0.07}
       &markers=color:0xFFB0B1%7Clabel:2%7C${coordinates.latitude-0.1},${coordinates.longitude-0.05}
