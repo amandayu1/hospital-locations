@@ -154,11 +154,13 @@ const List = () => {
       </h2>
 
       <button className="button" onClick={() => getLocation()}>Locate Me</button>
+
       <h4>Your Coordinates</h4>
       
       <p>Latitude: {isAddressVisible ? coordinates.latitude: null}</p>
       <p>Longitude: {isAddressVisible ? coordinates.longitude: null}</p>
-      <p>Address: {isAddressVisible ? userAddress  : ""}</p>
+
+      <p>Address: {isAddressVisible ? userAddress : ""}</p>
       
       {isAddressVisible ? <List />  : null}
     
