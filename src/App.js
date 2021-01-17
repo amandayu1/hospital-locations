@@ -2,6 +2,31 @@ import './App.css';
 
 import React, { useState, useEffect } from 'react';
 
+const List = () => {
+  return(
+      <ol>
+          <li>
+            <lead>North York General Hospital</lead>
+            <p>4001 Leslie St, North York</p>
+          </li>
+          <li>
+            <lead>Markham Stouffville Hospital</lead>
+            <p>381 Church St, Markham</p>
+          </li>
+          <li>
+            <lead>Sunnybrook Hospital</lead>
+            <p>2075 Bayview Ave, Toronto</p>
+          </li>
+          <li>
+            <lead>Scarborough General Hospital</lead>
+            <p>3050 Lawrence Ave E, Scarborough</p>
+          </li>
+        </ol>
+  )
+
+}
+
+
   const App = () => {
   const [userAddress, setUserAddress] = useState("");
   const [coordinates, setCoordinates] = useState({ latitude: "43.793607699999995", longitude: "-79.3284823" });
@@ -14,6 +39,7 @@ import React, { useState, useEffect } from 'react';
   }, [coordinates])
 
   const getLocation = async () => {
+
     if (navigator.geolocation) {
       // navigator.geolocation.getCurrentPosition(getCoordinates, handelLocationError);
 
@@ -38,21 +64,50 @@ import React, { useState, useEffect } from 'react';
 
   const getHospitalInfo = async () => {
     // https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.793607699999995,-79.3284823&radius=10000&type=hospital&keyword=hospital&name=hospital&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8
-    var myHeaders = new Headers();
-    myHeaders.append("Access-Control-Allow-Origin", "*");
-    myHeaders.append("Access-Control-Allow-Credentials", "true");
-    myHeaders.append("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+    
+    const response = await fetch(`https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.793607699999995,-79.3284823&radius=10000&type=hospital&keyword=hospital&name=hospital&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`);
+    const data = await response.json();
+    console.log(data);
+    
+    
+    // function logResult(result) {
+    //   console.log(result);
+    // }
+    
+    // function logError(error) {
+    //   console.log('Looks like there was a problem: \n', error);
+    // }
+    
+    // function validateResponse(response) {
+    //   if (!response.ok) {
+    //     console.log('cookies');
+    //     throw Error(response.statusText);
+    //   }
+    //   console.log('bookies');
+    //   return response;
+    // }
+    
+    // function readResponseAsJSON(response) {
+    //   return response.json();
+    // }
+    
+    // function fetchJSON(pathToResource) {
+    //   var myHeaders = new Headers({
+    //     'Content-Type': 'text/plain',
+    //     'Access-Control-Allow-Origin': '*'
+    //   });
 
-    var requestOptions = {
-    method: 'GET',
-    headers: myHeaders,
-    redirect: 'follow'
-    };
-
-    fetch("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.793607699999995,-79.3284823&radius=10000&type=hospital&keyword=hospital&name=hospital&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8")
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    //   fetch(pathToResource, {
+    //     // mode: 'no-cors',
+    //     headers: myHeaders
+    //   }) // 1
+    //   .then(validateResponse) // 2
+    //   .then(readResponseAsJSON) // 3
+    //   .then(logResult) // 4
+    //   .catch(logError);
+    // }
+    
+    // fetchJSON('https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=43.793607699999995,-79.3284823&radius=10000&type=hospital&keyword=hospital&name=hospital&key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8');
   }
 
   const handelLocationError = (error) => {
@@ -75,32 +130,33 @@ import React, { useState, useEffect } from 'react';
   }
 
   const [loc1, setLoc1] = useState({
-    latitude: `${coordinates.latitude + 400}`,
-    longitude: `${coordinates.latitude + 400}`
+    latitude: `${coordinates.latitude-0.02}`,
+    longitude: `${coordinates.latitude -0.05}`
   });
   const [loc2, setLoc2] = useState({
-    latitude: `${coordinates.latitude + 200}`,
-    longitude: `${coordinates.latitude + 200}`
+    latitude: `${coordinates.latitude }`,
+    longitude: `${coordinates.latitude -0.1}`
   });
   const [loc3, setLoc3] = useState({
-    latitude: `${coordinates.latitude - 400}`,
-    longitude: `${coordinates.latitude - 400}`
+    latitude: `${coordinates.latitude -0.06}`,
+    longitude: `${coordinates.latitude -0.09}`
   });
   const [loc4, setLoc4] = useState({
-    latitude: `${coordinates.latitude - 200}`,
-    longitude: `${coordinates.latitude + 200}`
+    latitude: `${coordinates.latitude - 0.1}`,
+    longitude: `${coordinates.latitude}`
   });
 
   return (
     <div className="Map">
       <h2>
-        Geolocation Test
+        Find the Nearest Hospital
       </h2>
 
-      <button className="button" onClick={() => getLocation()}>Get coordinates</button>
+      <button className="button" onClick={() => getLocation()}>Locate Me</button>
       <h4>Coordinates</h4>
       <p>Latitude: {coordinates.latitude}</p>
       <p>Longitude: {coordinates.longitude}</p>
+<<<<<<< HEAD
       <h4>Google Maps Geocoding</h4>
       <p>Address: {isAddressVisible ? userAddress : ""}</p>
       <img class="location" src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
@@ -108,9 +164,20 @@ import React, { useState, useEffect } from 'react';
       &markers=%7Ccolor:0xFFB0B1%7Clabel:1%7C${coordinates.latitude-0.05},${coordinates.longitude-0.07}
       &markers=color:0xFFB0B1%7Clabel:2%7C${coordinates.latitude-0.1},${coordinates.longitude-0.05}
       &markers=color:0xE26F6F%7Clabel:3%7C${coordinates.latitude-0.01},${coordinates.longitude-0.03}
+=======
+      <p>Address: {isAddressVisible ? userAddress  : ""}</p>
+      
+      {isAddressVisible ? <List />  : null}
+
+      <img src={`https://maps.googleapis.com/maps/api/staticmap?&zoom=11&size=512x512&maptype=roadmap\
+      &markers=size:small%7Ccolor:blue%7C${coordinates.latitude-0.01},${coordinates.longitude-0.02}
+      &markers=%7Ccolor:0xFFB0B1%7Clabel:3%7C${coordinates.latitude-0.06},${coordinates.longitude-0.1}
+      &markers=color:0xE26F6F%7Clabel:1%7C${coordinates.latitude-0.01},${coordinates.longitude-0.05}
+      &markers=color:0xFFB0B1%7Clabel:4%7C${coordinates.latitude-0.1},${coordinates.longitude}
+      &markers=color:0xE26F6F%7Clabel:2%7C${coordinates.latitude},${coordinates.longitude-0.1}
+>>>>>>> ebf9b4b49c25e975239a58ece10e6e68398968bc
       &key=AIzaSyDu4BYAiI5YwgKcxGaoPxElCcbQZSy1OK8`}
         alt="Your Location on Google Maps" />
-
     </div>
   );
 }
