@@ -1,6 +1,11 @@
 ol{
   text-align: left;
-  padding: 3% 0 2% 27%
+  padding: 3% 0 2%;
+
+}
+
+button:focus {
+  outline:0;
 }
 
 li{
@@ -11,7 +16,6 @@ li{
 
 img{
   margin-bottom: 15%;
-  
 }
 
 .button {
@@ -36,11 +40,18 @@ img{
   border: 1px solid #E26F6F;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 800px) {
+    body{
+      margin-left: 1%;
+    }
+  
   .location {
     text-align: center;
     justify-content: center;
     width: 300px;
     height:400px;
+  }
+  img{
+    margin-left: 0;
   }
 }
