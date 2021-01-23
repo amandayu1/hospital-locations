@@ -1,4 +1,5 @@
 # HEALTH TECH
+https://hospital-locations.herokuapp.com/
 Health Tech is a web app made for Hack the North 2021 hackathon.
 
 The problem
