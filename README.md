@@ -1,11 +1,8 @@
 # HEALTH TECH
 
-# Check out the demo video!
-
-https://www.youtube.com/watch?v=jlXJHF5yQXQ
-
+<b>Check out the demo video! https://www.youtube.com/watch?v=jlXJHF5yQXQ </b>
 </br>
-# Live at: https://hospital-locations.herokuapp.com/
+<b> Live at: https://hospital-locations.herokuapp.com/</b>
 </br>
 
 Health Tech consists of a chatbot recognizing COVID-19 symptoms, it displays a ranked list of recommended hospitals based on detected location on a map. Facilitating a more efficient patient-care system. It's web app made for Hack the North 2021 hackathon.
