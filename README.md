@@ -1,6 +1,7 @@
 # HEALTH TECH
 
-<br> Check out the demo video! https://www.youtube.com/watch?v=jlXJHF5yQXQ
+Check out the demo video! https://www.youtube.com/watch?v=jlXJHF5yQXQ
+</br>
 Live at: https://hospital-locations.herokuapp.com/</br>
 
 Health Tech is a web app made for Hack the North 2021 hackathon.
