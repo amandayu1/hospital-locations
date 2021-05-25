@@ -1,6 +1,9 @@
 # HEALTH TECH
 
-# Check out the demo video! https://www.youtube.com/watch?v=jlXJHF5yQXQ
+# Check out the demo video!
+
+https://www.youtube.com/watch?v=jlXJHF5yQXQ
+
 </br>
 # Live at: https://hospital-locations.herokuapp.com/
 </br>
